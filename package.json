@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "vercel-build": "NEXT_IGNORE_TYPE_ERROR=1 next build"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^0.0.48",

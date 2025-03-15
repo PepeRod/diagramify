@@ -37,11 +37,8 @@ const nextConfig = {
     // Ignorar errores de ESLint durante la compilación en producción para permitir que el build se complete
     ignoreDuringBuilds: process.env.NODE_ENV === 'production',
   },
-  // Permitir que variables de entorno faltantes durante la compilación no detengan el build
-  experimental: {
-    // Forzar compilación estática para páginas que no dependen de variables de entorno
-    outputStandalone: true,
-  },
+  // Output standalone es la configuración correcta (antes era experimental.outputStandalone)
+  output: 'standalone',
   // Configuración para evitar problemas con la API de OpenAI durante la fase de compilación
   // cuando no hay una API key disponible
   env: {
