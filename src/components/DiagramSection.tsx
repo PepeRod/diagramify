@@ -157,7 +157,7 @@ const DiagramSection: React.FC<DiagramSectionProps> = ({ section, index, onUpdat
     }
     
     return undefined;
-  }, [isExpanded, diagramHistory]);
+  }, [isExpanded]);
 
   // Efecto para establecer el zoom inicial y centrar el diagrama al expandirse
   useEffect(() => {
@@ -343,6 +343,13 @@ const DiagramSection: React.FC<DiagramSectionProps> = ({ section, index, onUpdat
           // Si el diagrama es el mismo, no hacemos nada con el historial
           console.log("El diagrama generado es igual al actual");
         }
+      } else if (data.error) {
+        // Manejar específicamente el error de API key faltante
+        if (data.error.includes('API key') || data.error.includes('OPENAI_API_KEY')) {
+          setError('No se pudo conectar con la API de OpenAI. Por favor, verifica que la clave de API esté configurada correctamente.');
+        } else {
+          throw new Error(data.error);
+        }
       } else {
         throw new Error('No se pudo generar el diagrama');
       }
@@ -401,6 +408,10 @@ const DiagramSection: React.FC<DiagramSectionProps> = ({ section, index, onUpdat
       const data = await response.json();
 
       if (!response.ok) {
+        // Manejar específicamente el error de API key faltante
+        if (data.error && (data.error.includes('API key') || data.error.includes('OPENAI_API_KEY'))) {
+          throw new Error('No se pudo conectar con la API de OpenAI. Por favor, verifica que la clave de API esté configurada correctamente.');
+        }
         throw new Error(data.error || `Error ${response.status}`);
       }
 
