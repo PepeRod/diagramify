@@ -157,7 +157,7 @@ const DiagramSection: React.FC<DiagramSectionProps> = ({ section, index, onUpdat
     }
     
     return undefined;
-  }, [isExpanded]);
+  }, [isExpanded, diagramHistory]);
 
   // Efecto para establecer el zoom inicial y centrar el diagrama al expandirse
   useEffect(() => {
@@ -999,13 +999,13 @@ const DiagramSection: React.FC<DiagramSectionProps> = ({ section, index, onUpdat
               <p className="text-xs text-gray-600 mb-2 space-y-0.5">
                 Describe los cambios específicos que quieres hacer al diagrama.<br/>
                 Ejemplos:<br/>
-                - "Hacer el diagrama horizontal"<br/>
-                - "Cambiar el título de X a Y"<br/>
-                - "Agregar una flecha de A hacia B"<br/>
-                - "Cambiar el color del nodo A a verde"<br/>
-                - "Usar colores azules para todas las cajas"<br/>
-                - "Colorear los nodos principales de rojo y los secundarios de azul"<br/>
-                - "Cambiar el fondo de los nodos a amarillo claro"<br/>
+                - &quot;Hacer el diagrama horizontal&quot;<br/>
+                - &quot;Cambiar el título de X a Y&quot;<br/>
+                - &quot;Agregar una flecha de A hacia B&quot;<br/>
+                - &quot;Cambiar el color del nodo A a verde&quot;<br/>
+                - &quot;Usar colores azules para todas las cajas&quot;<br/>
+                - &quot;Colorear los nodos principales de rojo y los secundarios de azul&quot;<br/>
+                - &quot;Cambiar el fondo de los nodos a amarillo claro&quot;<br/>
                 <span className="text-blue-600">Presiona Enter para guardar o Shift+Enter para nueva línea.</span>
               </p>
               <textarea
